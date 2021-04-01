@@ -14,3 +14,4 @@ sigma = 0.5:0.5:1.5
 plot(x,y1,"-", x,y2,"--", x,y3,":")
 xlabel('x')
 ylabel('phi(x-5,sigma)')
+legend('sigma(0.5)', 'sigma(1.0)', 'sigma(1.5)')
