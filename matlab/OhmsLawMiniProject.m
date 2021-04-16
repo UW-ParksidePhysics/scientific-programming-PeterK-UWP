@@ -14,10 +14,11 @@ R2 = [Resistor_two]
 for V = V(1,1)
     for R1 = R1(1,1)
         for R2 = R2(1,1)
-            matv = [R1, -R1 ; R1, -(R2 + R1)]
-            soli = [V ; 0]
-            vinverse = matv^(-1)
-            currents = [vinverse] * [soli]
+%             matv = [R1, -R1 ; R1, -(R2 + R1)]
+%             soli = [V ; 0]
+%             vinverse = matv^(-1)
+%             currents = [vinverse] * [soli]
+              currents = calculate_currents(V, ([R1 R2]))
         end
     end    
 end
@@ -42,10 +43,21 @@ ylabel('Total Curerent')
 legend('inverse of Resistance', 'max current', 'min-current')
 
 
-Total_Resistance = 1/calculate_slope(Given_Voltage, total_current)
+Total_Resistance = 1/calculate_conductance(Given_Voltage, total_current)
 
-function slope = calculate_slope(V, I)
-    slope = I/V
+function currents = calculate_currents(voltage, resistances)
+% Calculate currents in two-parallel-resistor, single-source circuit
+% v = i1 * R1 --> (R1 0  (i1  = (v
+% v = i2 * R2      0  R2) i2)    v)
+    matrix = diag(resistances);
+    vector = voltage * ones([2, 1]);
+    currents = matrix\vector;
 end
 
-%I = V/R
+function conductance = calculate_conductance(voltage, current)
+% G = I / V  
+% Conductance in a passive resistor equals the ratio of current through
+% the resistor to the voltage drop across it
+    conductance = current/voltage;
+end
+
