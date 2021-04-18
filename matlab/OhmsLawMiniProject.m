@@ -22,9 +22,9 @@ for V = V(1,1)
         end
     end    
 end
-current1 = currents(1,1)
+current3 = currents(1,1)
 current2 = currents(2,1)
-current3 = currents(1,1) - currents(2,1)
+current1 = currents(1,1) + currents(2,1)
 
 your_input = [current1, current2, current3]
 total_current = your_input(1,1)
