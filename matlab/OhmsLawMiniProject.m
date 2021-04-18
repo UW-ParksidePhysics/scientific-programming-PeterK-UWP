@@ -40,7 +40,7 @@ end
 
 xlabel('Given Potential')
 ylabel('Total Curerent')
-legend('inverse of Resistance', 'max current', 'min-current')
+legend('conductance', 'max current', 'min-current')
 
 
 Total_Resistance = 1/calculate_conductance(Given_Voltage, total_current)
