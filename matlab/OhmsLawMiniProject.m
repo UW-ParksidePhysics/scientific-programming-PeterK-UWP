@@ -37,7 +37,7 @@ for V = Varray
        plot(Varray, Iarray, 'r-', Given_Voltage, total_current, 'md', 0, 0, 'gs')
     end
 end
-
+title('conductance')
 xlabel('Given Potential')
 ylabel('Total Curerent')
 legend('conductance', 'max current', 'min-current')
