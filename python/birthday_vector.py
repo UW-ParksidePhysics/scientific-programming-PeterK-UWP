@@ -9,7 +9,7 @@ from vpython import *
 scene.background = color.white
 scene.width = 600
 scene.height = 600
-scene.forward = vector(-.5,-.3,-1)
+scene.forward = vector(-.5, -.3, -1)
 
 scene.caption= """To rotate "camera", drag with right button or Ctrl-drag.
 To zoom, drag with middle button or Alt/Option depressed, or use scroll wheel.
@@ -17,11 +17,13 @@ To zoom, drag with middle button or Alt/Option depressed, or use scroll wheel.
 To pan left/right and up/down, Shift-drag.
 Touch screen: pinch/extend to zoom, swipe or two-finger rotate."""
 
-xaxis=cylinder(color=vector(1,0,0), pos=vector(0,0,0), axis=vector(10,0,0), radius=0.3)
-xlbl=label(pos=vector(11,0,0), text="X", color=color.red, opacity=0, height=30, box=0)
-yaxis=cylinder(color=color.green, pos=vector(0,0,0), axis=vector(0,10,0), radius=0.3)
-ylbl=label(pos=vector(0,11,0), text="Y", color=color.green, opacity=0, height=30, box=0)
-zaxis=cylinder(color=color.blue, pos=vector(0,0,0), axis=vector(0,0,10), radius=0.3)
-xlbl=label(pos=vector(0,0,11), text="Z", color=color.blue, opacity=0, height=30, box=0)
+xaxis = cylinder(color=color.red, pos=vector(0, 0, 0), axis=vector(10, 0, 0), radius=0.3)
+xlbl = label(pos=vector(11, 0, 0), text="x", color=color.red, opacity=0, height=30, box=0)
+yaxis = cylinder(color=color.green, pos=vector(0, 0, 0), axis=vector(0, 10, 0), radius=0.3)
+ylbl = label(pos=vector(0, 11, 0), text="y", color=color.green, opacity=0, height=30, box=0)
+zaxis = cylinder(color=color.blue, pos=vector(0, 0, 0), axis=vector(0, 0, 10), radius=0.3)
+zlbl = label(pos=vector(0, 0, 11), text="z", color=color.blue, opacity=0, height=30, box=0)
 
-r = arrow(pos=vector(0,0,0), axis = vector(2,10,7), color=color.white, shaftwidth=0.5)
+r = arrow(pos=vector(0, 0, 0), axis = vector(3, 27, 1), color=color.purple, shaftwidth=0.5)
+rlbl = label(pos=vector(3, 27, 1), text="r = 3x+27y+z", color=color.purple, opacity=0, height=30, box=0)
+#r = arrow(pos=vector(0, 0, 0), axis = vector(2, 10, 7), color=color.purple, shaftwidth=0.5)
