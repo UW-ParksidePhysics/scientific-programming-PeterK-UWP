@@ -18,7 +18,9 @@ from vpython import *
 gotv = False
 v = vector(0, 0, 0)
 pause = False
-rotation = 0
+Peter_birthdate = 27
+Lena_birthdate = 28
+rotation = Peter_birthdate/Lena_birthdate
 drag = False
 
 class spacestation:
@@ -33,27 +35,27 @@ class spacestation:
         
         thick = 0.5 # thickness of space station
         dtheta = 2 * pi / self.N
-        paint = color.red
-        red = True
+        paint = color.purple
+        purple = True
         boxes = [self.person]
         
         for i in range(self.N):
             theta = i * dtheta
             b = box(pos=(self.R + thick / 2) * vector(cos(theta), sin(theta), 0),
                     size=vector(thick, 2 * (self.R + thick) * sin(dtheta / 2), thick))
-            if red:
-              b.color = color.red
-              red = False
+            if purple:
+              b.color = color.purple
+              purple = False
             else:
-              b.color = color.blue
-              red = True
+              b.color = color.green
+              purple = True
             b.rotate(angle=theta, axis=vector(0, 0, 1))
             boxes.append(b)
         
         self.hull = compound(boxes)
         
         self.ball = sphere(pos=self.person.pos + self.person.axis,
-                    color=color.cyan, size=2 * 0.2 * vector(1, 1, 1))
+                    color=color.white, size=2 * 0.2 * vector(1, 1, 1))
         
         self.trail = attach_trail(self.ball, radius=0.1 * self.ball.size.x, pps=10, retain=500)
         self.reset()
