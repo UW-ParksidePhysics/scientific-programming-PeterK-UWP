@@ -6,7 +6,7 @@
 # and the values of the two resistors (as shown bellow). Next we will construct two kirchhoff loops enveloping
 # the two resistors, and another around the voltage source and resistor one. These two equations will provide us
 # a matrix to which we can solve for the currents flowing through the two resistors. Next, we will take the two
-# currents and ad them up to produce the total current (i1). With the total current, we can graph it with the source
+# currents and add them up to produce the total current (i1). With the total current, we can graph it with the source
 # voltage, and graph the inverse of the total resistance (conductance). This graph will show the total
 # current of the circuit and what happens to the conductance as the total current goes to zero. Plugging in
 # any values of voltage and resistance will yield the conductance shown graphically.
