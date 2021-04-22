@@ -2,7 +2,7 @@
 # File structure
 # 1. Commented paragraph describing mini-project ~ 100-200 words
 #
-# We will be solving for the currents of a parallel circuit, given a source voltage
+# We will be solving for the currents of a two resistor parallel circuit, given a source voltage
 # and the values of the two resistors (as shown bellow). Next we will construct two kirchhoff loops enveloping
 # the two resistors, and another around the voltage source and resistor one. These two equations will provide us
 # a matrix to which we can solve for the currents flowing through the two resistors. Next, we will take the two
