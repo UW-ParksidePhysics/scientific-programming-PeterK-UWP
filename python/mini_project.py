@@ -1,8 +1,32 @@
 #### RENAME from mini_project.py to (your_project_short_name).py
 # File structure
 # 1. Commented paragraph describing mini-project ~ 100-200 words
+#
+# We will be solving for the currents of a parallel circuit, given a source voltage
+# and the values of the two resistors (as shown bellow). Next we will construct two kirchhoff loops enveloping
+# the two resistors, and another around the voltage source and resistor one. These two equations will provide us
+# a matrix to which we can solve for the currents flowing through the two resistors. Next, we will take the two
+# currents and ad them up to produce the total current (i1). With the total current, we can graph it with the source
+# voltage, and graph the inverse of the total resistance (conductance). This graph will show the total
+# current of the circuit and what happens to the conductance as the total current goes to zero. Plugging in
+# any values of voltage and resistance will yield the conductance shown graphically.
+#
+#        ___i1__>>_______i2__>>___
+#       |            |            |
+#       |  +      i3 | +          | +
+#      VOLT       \/ R1           R2
+#       |  -         | -          | -
+#       |____________|____________|
+#
+#
 # 2. Module imports that are used in multiple functions
+#
+# no imports used
+#
 # 3. Function definitions
+#
+# function currents = calculate_currents(voltage, resistances)
+#
 # 4. if __name__ == "__main__" block, which calls a primary function with a clear name 
 
 # All code is inside function definitions for simulation solution & visualization (functional programming)
@@ -25,3 +49,4 @@
 #		data read-in
 #		simulation solution 
 #		visualization
+
