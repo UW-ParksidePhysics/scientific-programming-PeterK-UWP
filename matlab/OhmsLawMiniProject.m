@@ -6,31 +6,17 @@ Resistor_two = 7
 
 
 V = [Given_Voltage]
-Varray = [0:1:Given_Voltage] 
-R1 = [Resistor_one]
-R2 = [Resistor_two]
+Resistances = [Resistor_one, Resistor_two]
 
+currents_get = calculate_currents(Given_Voltage, Resistances)
 
-for V = V(1,1)
-    for R1 = R1(1,1)
-        for R2 = R2(1,1)
-%             matv = [R1, -R1 ; R1, -(R2 + R1)]
-%             soli = [V ; 0]
-%             vinverse = matv^(-1)
-%             currents = [vinverse] * [soli]
-              currents = calculate_currents(V, ([R1 R2]))
-        end
-    end    
-end
-current3 = currents(1,1)
-current2 = currents(2,1)
-current1 = currents(1,1) + currents(2,1)
+total_current = currents_get(1,1) + currents_get(2,1)
 
-your_input = [current1, current2, current3]
-total_current = your_input(1,1)
-
-spaceing = current1/(Given_Voltage)
+spaceing = total_current/(Given_Voltage)
+Varray = [0:1:Given_Voltage]
 Iarray = [0:spaceing:current1]
+
+Total_Resistance = 1/calculate_conductance(Given_Voltage, total_current)
 
 for V = Varray
     for I = Iarray
@@ -43,7 +29,6 @@ ylabel('Total Curerent')
 legend('conductance', 'max current', 'min-current')
 
 
-Total_Resistance = 1/calculate_conductance(Given_Voltage, total_current)
 
 function currents = calculate_currents(voltage, resistances)
 % Calculate currents in two-parallel-resistor, single-source circuit
@@ -60,4 +45,3 @@ function conductance = calculate_conductance(voltage, current)
 % the resistor to the voltage drop across it
     conductance = current/voltage;
 end
-
