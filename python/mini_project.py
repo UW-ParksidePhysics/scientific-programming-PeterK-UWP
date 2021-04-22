@@ -6,7 +6,7 @@
 # and the values of the two resistors (as shown bellow). Next we will construct two kirchhoff loops enveloping
 # the two resistors, and another around the voltage source and resistor one. These two equations will provide us
 # a matrix to which we can solve for the currents flowing through the two resistors. Next, we will take the two
-# currents and add them up to produce the total current (i1). With the total current, we can graph it with the source
+# currents and ad them up to produce the total current (i1). With the total current, we can graph it with the source
 # voltage, and graph the inverse of the total resistance (conductance). This graph will show the total
 # current of the circuit and what happens to the conductance as the total current goes to zero. Plugging in
 # any values of voltage and resistance will yield the conductance shown graphically.
@@ -25,7 +25,15 @@
 #
 # 3. Function definitions
 #
-# function currents = calculate_currents(voltage, resistances)
+# function currents = calculate_currents(voltage, resistances):
+#    matrix = diag(resistances);
+#    vector = voltage * ones([2, 1]);
+#    currents = matrix / vector;
+# end
+#
+# function conductance = calculate_conductance(voltage, current)
+#    conductance = current / voltage;
+# end
 #
 # 4. if __name__ == "__main__" block, which calls a primary function with a clear name 
 
