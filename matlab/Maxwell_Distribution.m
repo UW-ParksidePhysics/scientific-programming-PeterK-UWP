@@ -58,3 +58,11 @@ function [v_max, v_rms, v_ave] = velocities(T, m)
 end
 
 %end
+
+%code runs wihout error
+%key is big, and slopes are very close together
+%code is understandable to me
+%comments show planning beforehand, no other comments
+%varable names are realtable to problem
+%range capures the correct values (main values)
+%graph shows a great representation of the diffrent maxwell distributions
