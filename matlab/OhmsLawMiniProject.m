@@ -1,11 +1,11 @@
 
 %Plug in 'a' for your currents of a 2 parallel resistor circuit
-#        ___i1__>>_______i2__>>___
-#       |            |            |
-#       |  +      i3 | +          | +
-#      VOLT       \/ R1           R2
-#       |  -         | -          | -
-#       |____________|____________|
+%        ___i1__>>_______i2__>>___
+%       |            |            |
+%       |  +      i3 | +          | +
+%      VOLT       \/ R1           R2
+%       |  -         | -          | -
+%       |____________|____________|
 
 Given_Voltage = 6   % input
 Resistor_one = 13
