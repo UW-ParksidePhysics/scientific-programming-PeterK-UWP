@@ -21,7 +21,7 @@ total_current = currents_get(1,1) + currents_get(2,1)
 
 spaceing = total_current/(Given_Voltage)
 Varray = [0:1:Given_Voltage]
-Iarray = [0:spaceing:current1]
+Iarray = [0:spaceing:total_current]
 
 Total_Resistance = 1/calculate_conductance(Given_Voltage, total_current)
 
@@ -31,8 +31,8 @@ for V = Varray
     end
 end
 title('conductance')
-xlabel('Given Potential')
-ylabel('Total Curerent')
+xlabel('Given Potential (V)')
+ylabel('Total Curerent (A)')
 legend('conductance', 'max current', 'min-current')
 
 
