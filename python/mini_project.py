@@ -33,6 +33,70 @@
 #
 # function conductance = calculate_conductance(voltage, current)
 #    conductance = current / voltage;
+
+import numpy as np
+import matplotlib.pyplot as plt
+voltage_source = 6    # inputs
+resistor_one = 13
+resistor_two = 7
+V = [voltage_source]
+resistances = [resistor_one, resistor_two]
+
+def calculate_currents(voltage, resistances):
+    matrix = np.linalg.inv(np.diag(resistances));
+    vector = voltage * np.ones([2, 1]);
+    currents = vector * matrix
+    return currents
+
+def calculate_conductance(voltage, current):
+    conductance = current / voltage;
+    return conductance
+
+def calculate_power(voltage, current):
+    power = current * voltage
+    return power
+
+currents_get = calculate_currents(voltage_source, resistances)
+total_current = currents_get[0][0] + currents_get[1][1]
+# currents_get.append(total_current)
+# print(currents_get)
+# print(total_current)
+
+spaceing = total_current / (voltage_source)
+spacing1 = currents_get[0][0] / (voltage_source)
+spacing2 = currents_get[1][1] / (voltage_source)
+Varray = np.linspace(0, 1, voltage_source)
+Iarray = [
+    np.linspace(0, spaceing, total_current),
+    np.linspace(0, spaceing1, currents_get[0][0]),
+    np.linspace(0, spacing2, currents_get[1][1])
+]
+colors = [
+    'r-',
+    'b-',
+    'g-'
+]
+currentM = [
+    total_current,
+    currents_get[0][0],
+    currents_get[1][1]
+]
+labels = [
+    'total conductance',
+    'conductance R1',
+    'conductance R2'
+]
+Total_Resistance = 1/calculate_conductance(voltage_source, total_current)
+Power = calculate_power(voltage_source,total_current)
+
+def plot_conductances(
+        Varray, Iarray, voltage_source, current, color, label
+):
+    for i in Iarray:
+        plt(Varray, Iarray, voltage_source, currentM, colors, labels)
+
+
+print(plot_conductances)
 # end
 #
 # 4. if __name__ == "__main__" block, which calls a primary function with a clear name 
