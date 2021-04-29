@@ -6,10 +6,11 @@
 # and the values of the two resistors (as shown bellow). Next we will construct two kirchhoff loops enveloping
 # the two resistors, and another around the voltage source and resistor one. These two equations will provide us
 # a matrix to which we can solve for the currents flowing through the two resistors. Next, we will take the two
-# currents and ad them up to produce the total current (i1). With the total current, we can graph it with the source
+# currents and add them up to produce the total current. With the total current, we can graph it with the source
 # voltage, and graph the inverse of the total resistance (conductance). This graph will show the total
 # current of the circuit and what happens to the conductance as the total current goes to zero. Plugging in
-# any values of voltage and resistance will yield the conductance shown graphically.
+# any values of voltage and resistance will yield the conductance shown graphically. This grpah will also display
+# the other conductances of each resistor as well.
 #
 #        ___i1__>>_______i2__>>___
 #       |            |            |
@@ -21,21 +22,18 @@
 #
 # 2. Module imports that are used in multiple functions
 #
-# no imports used
+# import numpy, and matplotlib.pyplot
 #
 # 3. Function definitions
 #
-# function currents = calculate_currents(voltage, resistances):
-#    matrix = diag(resistances);
-#    vector = voltage * ones([2, 1]);
-#    currents = matrix / vector;
-# end
+# define currents as a matrix
 #
-# function conductance = calculate_conductance(voltage, current)
-#    conductance = current / voltage;
+# define conductance and power as their simple formulas (see comments)
+#
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 voltage_source = 6    # inputs
 resistor_one = 13
 resistor_two = 7
@@ -49,10 +47,12 @@ def calculate_currents(voltage, resistances):
     return currents
 
 def calculate_conductance(voltage, current):
+    # G = I/V
     conductance = current / voltage;
     return conductance
 
 def calculate_power(voltage, current):
+    # P = I*V
     power = current * voltage
     return power
 
@@ -63,13 +63,13 @@ total_current = currents_get[0][0] + currents_get[1][1]
 # print(total_current)
 
 spaceing = total_current / (voltage_source)
-spacing1 = currents_get[0][0] / (voltage_source)
-spacing2 = currents_get[1][1] / (voltage_source)
+spaceing1 = currents_get[0][0] / (voltage_source)
+spaceing2 = currents_get[1][1] / (voltage_source)
 Varray = np.linspace(0, 1, voltage_source)
 Iarray = [
     np.linspace(0, spaceing, total_current),
     np.linspace(0, spaceing1, currents_get[0][0]),
-    np.linspace(0, spacing2, currents_get[1][1])
+    np.linspace(0, spaceing2, currents_get[1][1])
 ]
 colors = [
     'r-',
