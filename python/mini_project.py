@@ -60,12 +60,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def initialize_parameters():
     voltage_source = 6    # inputs (Voltage as whole number)
     resistor_one = 13
     resistor_two = 7
     resistances = [resistor_one, resistor_two]
     return voltage_source, resistances
+
+
+"""
+   This equation provides the values needed throughout the rest of the code
+"""
 
 
 def calculate_currents(voltage, resistance):
@@ -75,9 +81,19 @@ def calculate_currents(voltage, resistance):
     return currents
 
 
+"""
+   This equation calculates the currents for the 1st and 2nd resistors based on the inputs
+"""
+
+
 def calculate_conductance(voltage, current):
     conductance = current / voltage;
     return conductance
+
+
+"""
+   This equation calculates the conductance for the varying currents and voltages in the voltage and current array
+"""
 
 
 def calculate_power(voltage, current):
@@ -86,64 +102,63 @@ def calculate_power(voltage, current):
 
 
 """
-   this equation... (doc string)
+   This equation calculates the power for the total current and given voltage
 """
 
 
 def setup_arrays(voltage_source, resistances):
-
-    currents_get = calculate_currents(voltage_source, resistances)
-    total_current = (currents_get[0][0] + currents_get[1][1])
-    # currents_get.append(total_current)
     # print(currents_get)
     # print(total_current)
-
-    # spaceing = total_current / voltage_source
-    # spaceing1 = currents_get[0][0] / voltage_source
+    currents_get = calculate_currents(voltage_source, resistances)
+    total_current = (currents_get[0][0] + currents_get[1][1])
     number_of_points = 100
-    # spaceing2 = currents_get[1][1] / voltage_source
-    V_array = np.linspace(0, voltage_source, number_of_points)
-    I_array = [
+    v_array = np.linspace(0, voltage_source, number_of_points)
+    i_array = [
         np.linspace(0, total_current, number_of_points),
         np.linspace(0, currents_get[0][0], number_of_points),
         np.linspace(0, currents_get[1][1], number_of_points)
     ]
 
-    currentM = [
+    current_m = [
         total_current,
         currents_get[0][0],
         currents_get[1][1]
     ]
-    return V_array, I_array, currentM
+    return v_array, i_array, current_m
 
 
-# Total_Resistance = 1/calculate_conductance(voltage_source, total_current)
-# Power = calculate_power(voltage_source, total_current)
+"""
+   This defines the varying arrays used for plotting: currents from calculate currents, total current, voltage array
+    and current array. number of points is used for spacing between arrays to plot
+"""
+
 
 def plot_conductances(
         v_array, i_array, given_voltage, current
 ):
+    total_resistance = 1 / calculate_conductance(voltage_source, i_array[0][-1])
+    power = calculate_power(voltage_source, i_array[0][-1])
     labels = [
         'total conductance',
         'conductance R1',
         'conductance R2'
     ]
-    colors = [
-        'r',
-        'b',
-        'g'
-    ]
-
 
     for i in i_array:
-        plt.plot(v_array, i,)        # c=colors[i_array.index(i)], label=labels[i_array.index(i)])
+        plt.plot(v_array, i)        # c=colors[i_array.index(i)], label=labels[i_array.index(i)])
         plt.scatter(given_voltage * np.ones(len(current)), current)
+    plt.text(0, 1, f"Power: {power:0.2f}")
+    plt.text(0, 0.8, f"Total Resistance: {total_resistance:0.2f}")
+    plt.xlabel('voltage source, (V)')
+    plt.ylabel('total current, (A)')
+    plt.legend(labels)
     plt.show()
 
 
-plt.xlabel('voltage source')
-plt.ylabel('total current')
-plt.legend('labels')
+"""
+   This edefines our graph and plots it based on the values presented above. labeling is also done with the label list
+"""
+
 
 if __name__ == '__main__':
     voltage_source, resistances = initialize_parameters()
