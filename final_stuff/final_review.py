@@ -1,2 +1,0 @@
-
-print("chicken wings")
