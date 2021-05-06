@@ -4,13 +4,9 @@ import numnpy as np
 def two_column_text_read(file_name):
 
   try:
-    file = open ('volumes_energies.dat')
-    print('%12s %12s' %('Volume', 'Energy'))  
-    print('-----------------------')
-
+    file = open ('volumes_energies.dat')  
   except OSError as error:
     print(error)
-    print('That file was not found')
     return
 
   content = file.readlines()
@@ -22,6 +18,7 @@ def two_column_text_read(file_name):
     info[0, n] = float(elements[0])
     info[1, n] = float(elements[1])
     n += 1
+    
   return info
 
 
