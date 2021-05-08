@@ -19,7 +19,7 @@ def two_column_text_read(file_name):
   n = 0
 
   for line in content:
-    elements = line.slpit()
+    elements = line.split()
     data[0, n] = float(elements[0])
     data[1, n] = float(elements[1])
     n += 1

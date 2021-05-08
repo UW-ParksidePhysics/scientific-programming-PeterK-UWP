@@ -27,3 +27,13 @@ if __name__ == "__main__":
     print(f"lambda{i}={eig_val[i]}")
     print(f"e{i}={eig_vec[:, i]}")
 
+#def lowest_eigenvector(square_matrix, number_of_eigenvectors=3):
+#  m, n = square_matrix.shape
+  #if m != n:
+  #  raise IndexError("Matrix is not square!")
+
+  #values, vectors = np.linalg.eig(square_matrix)
+  #values_sorted = np.sort(values)
+  #vectors_sorted = vectors[:, values.argsort()]
+
+  #return values_sorted[:number_of_eigenvectors+1], vectors_sorted[:number_of_eigenvectors+1]

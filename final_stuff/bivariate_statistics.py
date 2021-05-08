@@ -1,3 +1,9 @@
+"""
+This function provides many statistics of the data provided, and spits it out as an array.
+__author__ = "Peter & Lena"
+"""
+
+
 from scipy import stats
 import numpy as np
 
