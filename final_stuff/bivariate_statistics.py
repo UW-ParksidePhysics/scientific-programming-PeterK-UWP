@@ -2,12 +2,12 @@ from scipy import stats
 import numpy as np
 
 
-def bivariate_statistics(info):
+def bivariate_statistics(data):
   
-  if (len(info)!=2 or len(info[0])<=1): 
+  if (len(data)!=2 or len(data[0])<=1): 
     raise IndexError
 
-  stat = stats.stats.describe(info, axis=1)
+  stat = stats.stats.describe(data, axis=1)
   mean_of_y = stat.minmax[0][1]
   x_min, x_max = stat.minmax[0][0], stat.minmax[1][0]
   y_min, y_max = stat.minmax[0][1], stat.minmax[1][1]
@@ -19,10 +19,10 @@ def bivariate_statistics(info):
 
 
 if __name__ == "__main__":
-  x = [1, 2, 3] #2
-  y = [2, 4, 6] #4
-  data = np.array([x, y])
-  print(data)
-  output = bivariate_statistics(data)
+  x = [1, 2, 3] #2 (Inputs)
+  y = [2, 4, 6] #4 (inputs)
+  data_array = np.array([x, y])
+  print(data_array)
+  output = bivariate_statistics(data_array)
   print(output)
 
