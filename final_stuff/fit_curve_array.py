@@ -16,7 +16,7 @@ def fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100):
 
   x_array = np.linspace(min_x, max_x, number_of_points) #2 parameters
   y_array = np.polyval(quadratic_coefficients, x_array) #
-  data = np.array(x_array, y_array)  #np.column_stack((x_array, y_array))
+  fit_curve = np.array((x_array, y_array))  #np.column_stack((x_array, y_array))
 
-  return data
+  return fit_curve
 
