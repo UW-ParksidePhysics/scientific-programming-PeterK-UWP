@@ -20,7 +20,16 @@ quadratic_array = [quadratic_coefficients[0], quadratic_coefficients[1]]
 
 from fit_curve_array import fit_curve_array #erroring in fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
-print(fit_curve)
+#print(fit_curve)
+
+from lowest_eigenvectors import lowest_eigenvectors
+matrix = np.array([
+  [5, 0, 0],
+  [0, 2, 0],
+  [0, 0, 3]
+  ])
+values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
+print(values_sorted, vectors_sorted)
 
 from plot_data_with_fit import plot_data_with_fit
 scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="", fit_format="")
@@ -30,16 +39,3 @@ for i in plot_data_with_fit:
   plt.xlabel('Volumes')
   plt.ylabel('Energies')
   plt.show()
-
-from lowest_eigenvectors import lowest_eigenvectors
-
-
-
-
-
-
-#plt.show(plot_data_with_fit(array, fit_curve_array))
-#print(fit_curve_array(quadratic_fit(array), 0, 10,))
-#print(bivariate_statistics(array))
-
-#def fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100):
