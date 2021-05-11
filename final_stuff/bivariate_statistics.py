@@ -1,7 +1,7 @@
 """
 This function provides many statistics of the data provided, and spits it out as an array.
-__author__ = "Peter & Lena"
 """
+__author__ = "Peter & Lena"
 
 
 from scipy import stats
@@ -21,7 +21,6 @@ def bivariate_statistics(data):
   statistics = np.array([mean_of_y, standard_deviation_of_y, x_min, x_max, y_min, y_max])
    
   return statistics
-
 
 
 if __name__ == "__main__":
