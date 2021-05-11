@@ -1,5 +1,6 @@
 """
-This function reads a readable file inputed into it. In this case(volumes_energies). It will then arrange the values into two data sets and continues this process until the list is complete
+This function reads a readable file inputed into it. In this case(volumes_energies).
+It will then arrange the values into two data sets and continues this process until the list is complete
 __author__ = "Peter & Lena"
 """
 
