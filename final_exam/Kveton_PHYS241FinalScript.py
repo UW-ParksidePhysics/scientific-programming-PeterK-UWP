@@ -9,7 +9,7 @@ def parse_file_name(file_name):
   parse_file_name = symbol, structure, acronym
   return parse_file_name
 
-print(parse_file_name('Al.Fm-3m.GGA-PBE.dat'))
+#print(parse_file_name('Al.Fm-3m.GGA-PBE.dat'))
 
 from two_column_text_read import two_column_text_read
 array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")
@@ -64,4 +64,20 @@ scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo"
 
 print('oophf')
 
+def anotate_graph(symbol, symmetry, bulk):
+  
+  plt.text(140, 0.002, f"symbol: {symbol:0.2f}")
+  plt.text(115, 0.001, f"symmetry: {symmetry:0.2f}")
+  plt.text(115, 0.002, f"bulk: {r'$K_0$':0.2f}")
+  plt.show()
+  return anotate_graph
 
+anotated = anotate_graph(Al, Fm3m, bulk)
+
+
+if display_graph = True
+  plt.show() 
+else:
+  fig.savefig('plot.png')
+
+d
