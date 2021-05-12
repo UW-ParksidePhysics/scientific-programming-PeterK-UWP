@@ -23,15 +23,11 @@ def convert_energy(value, unit="", new_unit=""):
 
 
 def convert_bulk_modulus(value): #, "unit", "new unit"):
-  if "unit" != "rydberg_per_cubic_bohr":
-    raise ValueError #(must use "rydberg_per_cubic_bohr" for "unit")
-  elif "new unit" != "gigapascal":
-    raise ValueError #(must use "gigapascal" for "new unit")
-  else:
-    volume = value * 0.529**3  #Ang^3/atom
+
+    volume = vafrom matplotlib.axis import Axis as axlue * 0.529**3  #Ang^3/atom
     energy = value * 13.61    #eV/atom
     bulk_modulus = energy / volume
-  return bulk_modulus, "new unit"
+  return bulk_modulus, "gigapascal"
 
 print(convert_energy(10, "rydberg_per_atom", "eV_per_atom")) #, "rydberg_per_atom", "eV_per_atom"))
 

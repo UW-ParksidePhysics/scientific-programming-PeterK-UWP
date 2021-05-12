@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.axis import Axis as ax
 
 def parse_file_name(file_name):
   symbol = file_name[0]+ file_name[1]
@@ -56,28 +57,16 @@ values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
 from fit_curve_array import fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 #print(fit_curve)
-print('oophf')
+print('does this go through?')
 
 
 from plot_data_with_fit import plot_data_with_fit
 scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
 
-print('oophf')
 
-def anotate_graph(symbol, symmetry, bulk):
+t = ax.text(130, 0.001, "Al")
+def annotate_graph(symbol, structure, bulk_modulus):
+  ax.annotate("symbol", xy=(130, 0.001))
+
   
-  plt.text(140, 0.002, f"symbol: {symbol:0.2f}")
-  plt.text(115, 0.001, f"symmetry: {symmetry:0.2f}")
-  plt.text(115, 0.002, f"bulk: {r'$K_0$':0.2f}")
-  plt.show()
-  return anotate_graph
 
-anotated = anotate_graph(Al, Fm3m, bulk)
-
-
-if display_graph = True
-  plt.show() 
-else:
-  fig.savefig('plot.png')
-
-d

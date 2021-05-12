@@ -2,7 +2,7 @@
 takes in data from two_column and fit cuve from eq.of state and plots the stuff
 """
 import matplotlib.pyplot as plt
-from matplotlib.axis import Axis as ax
+
 
 def plot_data_with_fit(data, fit_curve, data_format="", fit_format=""):
   
