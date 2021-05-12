@@ -40,8 +40,8 @@ fit_eos = fit_eos(array[0], array[1], quadratic_coefficients)
 
 
 from generate_matrix import generate_matrix # Harmonic 120,100
-matrix = generate_matrix(min_x, max_x, 120, 'sinusoidal', 100)
-#print(matrix)
+matrix = generate_matrix(min_x, max_x, 120, 'Harmonic', 100)
+print(matrix)
 
 from lowest_eignevectors import lowest_eigenvectors #0, 1, 2
 matrix = np.array([
