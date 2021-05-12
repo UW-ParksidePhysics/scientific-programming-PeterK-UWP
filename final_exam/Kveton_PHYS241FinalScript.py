@@ -57,21 +57,21 @@ values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
 from fit_curve_array import fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 #print(fit_curve)
-print('does this go through?')
+
 
 
 from plot_data_with_fit import plot_data_with_fit
-scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
+def annotate_graph():
+  #ax.annotate("symbol", xy=(130, 0.001))
+  #ax.annotate("structure", xy=(115, 0.001))
+  #ax.annotate("bulk_modulus", xy=(115, 0.0015))
+  plt.text(130, 0.001, "symbol")
+  plt.text(115, 0.001, "structure")
+  plt.text(115, 0.0015, "bulk_modulus")
 
-plt.text(130, 0.001, "Al")
-plt.text(115, 0.001, "Fm3m")
-plt.text(115, 0.0015, "bulk_modulus")
+
+print('does this go through?')
+
+plot_graph = annotate_graph(plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")) #scatter_plot, curve_plot
 
 #plt.savefig("plot.png")
-
-t = ax.text(130, 0.001, "Al")
-def annotate_graph(symbol, structure, bulk_modulus):
-  ax.annotate("symbol", xy=(130, 0.001))
-
-
-
