@@ -63,10 +63,15 @@ print('does this go through?')
 from plot_data_with_fit import plot_data_with_fit
 scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
 
+plt.text(130, 0.001, "Al")
+plt.text(115, 0.001, "Fm3m")
+plt.text(115, 0.0015, "bulk_modulus")
+
+#plt.savefig("plot.png")
 
 t = ax.text(130, 0.001, "Al")
 def annotate_graph(symbol, structure, bulk_modulus):
   ax.annotate("symbol", xy=(130, 0.001))
 
-  
+
 
