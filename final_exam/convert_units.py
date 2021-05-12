@@ -1,16 +1,37 @@
-def convert_units(value_to_convert, units_before_conversion, unit_after_conversion):
-  if unit_before_conversion == cubic_bohr_per_atom:
-    volume = value_to_convert * 0.529**3('unit_after_conversion') 
-    #cubic angstrom^3s/atom
-
-  else unit_before_conversion == rydberg_per_atom:
-    energy = value_to_convert * 13.61('unit_after_conversion')
-    #eV/atom
-
-  else unit_before_conversion == rydberg_per_cubic_bohr:
-    bulk_modulus = energy / volume 
-    #eV/atom * atom/angstrom^3 = eV/angstrom^3
+"""
+taking data (two_column) and fit (eq. of states) and converting their units
+"""
  
-  return converted_value
- 
-print(convert_units(10, cubic_bohr_per_atom, 16))
+def convert_volume(value): #, "unit", "new unit"):
+  if "unit" != "cubic_bohr_per_atom":
+    raise ValueError #(must use "cubic_bohr_per_atom" for "unit")
+  elif "new unit" != "cubic_angstrom_per_atom":
+    raise ValueError #(must use "cubic_angstrom_per_atom" for "new unit")
+  else:
+    volume = value * 0.529**3 
+  return volume, "new unit"
+
+
+def convert_energy(value, unit="", new_unit=""):
+  if unit="" != rydberg_per_atom:
+    raise IndexError("must use rydberg_per_atom for unit")
+  elif new_unit="" != "eV_per_atom":
+    raise IndexError("must use eV_per_atom for new unit")
+  else:
+    energy = value * 13.61
+  return energy, new_unit=""
+
+
+def convert_bulk_modulus(value): #, "unit", "new unit"):
+  if "unit" != "rydberg_per_cubic_bohr":
+    raise ValueError #(must use "rydberg_per_cubic_bohr" for "unit")
+  elif "new unit" != "gigapascal":
+    raise ValueError #(must use "gigapascal" for "new unit")
+  else:
+    volume = value * 0.529**3  #Ang^3/atom
+    energy = value * 13.61    #eV/atom
+    bulk_modulus = energy / volume
+  return bulk_modulus, "new unit"
+
+print(convert_energy(10, "rydberg_per_atom", "eV_per_atom")) #, "rydberg_per_atom", "eV_per_atom"))
+

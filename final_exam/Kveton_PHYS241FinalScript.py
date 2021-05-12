@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 def parse_file_name(file_name):
   symbol = file_name[0]+ file_name[1]
@@ -19,6 +19,8 @@ from bivariate_statistics import bivariate_statistics
 statistics = bivariate_statistics(array)
 #mean_of_y, standard_deviation_of_y, x_min, x_max, y_min, y_max
 #print(statistics)
+min_x = statistics[2]
+max_x = statistics[3]
 
 from quadratic_fit import quadratic_fit
 quadratic_coefficients = quadratic_fit(array)
@@ -27,3 +29,37 @@ quadratic_coefficients = quadratic_fit(array)
 from equations_of_state import fit_eos
 fit_eos = fit_eos(array[0], array[1], quadratic_coefficients)
 #print(fit_eos)
+
+#from convert_units import convert_values
+#converted_array = convert_values(array)
+#converted_fit = convert_values(fit_eos)
+#print(converted_array)
+#print(converted_fit)
+
+
+from generate_matrix import generate_matrix # Harmonic 120,100
+matrix = generate_matrix(min_x, max_x, 120, 'sinusoidal', 100)
+#print(matrix)
+
+from lowest_eignevectors import lowest_eigenvectors #0, 1, 2
+matrix = np.array([
+  [0, 0, 0],
+  [0, 1, 0],
+  [0, 0, 2]
+  ])
+values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
+#print(values_sorted)
+#print(vectors_sorted)
+
+
+
+
+from plot_data_with_fit import plot_data_with_fit
+scatter_plot, curve_plot = plot_data_with_fit(array, fit_eos, data_format="", fit_format="")
+
+for i in plot_data_with_fit:
+  plt.plot(array)
+  plt.scatter(scatter_plot, curve_plot)
+  plt.xlabel('Volumes')
+  plt.ylabel('Energies')
+  plt.show()
