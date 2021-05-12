@@ -61,9 +61,10 @@ from plot_data_with_fit import plot_data_with_fit
 scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="", fit_format="")
 
 for i in plot_data_with_fit:
-  plt.plot(array, 'b')
-  plt.plot(fit_curve, 'k')
+  plt.plot(array[0], array[1], 'b')
+  plt.plot(fit_curve[0], fit_curve[1], 'k')
   plt.scatter(scatter_plot, curve_plot)
-plt.xlabel(r'$\mathit{V}(\AA^3$/atom)')
-plt.ylabel(r'$\mathit{E}$ (eV/atom)')
+plt.xlabel('V, (A^3/atom)')
+plt.ylabel('E, (eV/atom)')
+
 plt.show()
