@@ -41,7 +41,7 @@ fit_eos = fit_eos(array[0], array[1], quadratic_coefficients)
 
 from generate_matrix import generate_matrix # Harmonic 120,100
 matrix = generate_matrix(min_x, max_x, 120, 'Harmonic', 100)
-print(matrix)
+#print(matrix)
 
 from lowest_eignevectors import lowest_eigenvectors #0, 1, 2
 matrix = np.array([
@@ -56,15 +56,12 @@ values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
 from fit_curve_array import fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 #print(fit_curve)
+print('your gay')
+
 
 from plot_data_with_fit import plot_data_with_fit
-scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="", fit_format="")
+scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="b", fit_format="k")
 
-for i in plot_data_with_fit:
-  plt.plot(array[0], array[1], 'b')
-  plt.plot(fit_curve[0], fit_curve[1], 'k')
-  plt.scatter(scatter_plot, curve_plot)
-plt.xlabel('V, (A^3/atom)')
-plt.ylabel('E, (eV/atom)')
+print('your gay')
 
-plt.show()
+
