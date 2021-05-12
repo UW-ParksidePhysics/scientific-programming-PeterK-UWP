@@ -56,12 +56,12 @@ values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
 from fit_curve_array import fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 #print(fit_curve)
-print('your gay')
+print('oophf')
 
 
 from plot_data_with_fit import plot_data_with_fit
-scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="b", fit_format="k")
+scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
 
-print('your gay')
+print('oophf')
 
 
