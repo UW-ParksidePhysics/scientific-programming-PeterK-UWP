@@ -34,7 +34,7 @@ from fit_curve_array import fit_curve_array #erroring in fit_curve_array
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 print('----------')
 print('fit_curve is an eye sore')
-#print(fit_curve)
+print(fit_curve)
 print('----------')
 
 

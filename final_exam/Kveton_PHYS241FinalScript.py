@@ -27,6 +27,8 @@ quadratic_coefficients = quadratic_fit(array)
 #print(quadratic_coefficients)
 
 from equations_of_state import fit_eos
+volumes = array[0]
+energy = array[1]
 fit_eos = fit_eos(array[0], array[1], quadratic_coefficients)
 #print(fit_eos)
 
@@ -51,15 +53,17 @@ values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
 #print(values_sorted)
 #print(vectors_sorted)
 
-
-
+from fit_curve_array import fit_curve_array
+fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
+#print(fit_curve)
 
 from plot_data_with_fit import plot_data_with_fit
-scatter_plot, curve_plot = plot_data_with_fit(array, fit_eos, data_format="", fit_format="")
+scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="", fit_format="")
 
 for i in plot_data_with_fit:
-  plt.plot(array)
+  plt.plot(array, 'b')
+  plt.plot(fit_curve, 'k')
   plt.scatter(scatter_plot, curve_plot)
-  plt.xlabel('Volumes')
-  plt.ylabel('Energies')
-  plt.show()
+plt.xlabel(r'$\mathit{V}(\AA^3$/atom)')
+plt.ylabel(r'$\mathit{E}$ (eV/atom)')
+plt.show()
