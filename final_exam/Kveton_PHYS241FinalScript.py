@@ -43,7 +43,16 @@ def annotate_graph(symbol, structure):
   ax.annotate(r'$ {}\overline{{{}}} {}$'.format(structure[0:2],
   structure[3], structure[1]), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2))
 
+  ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 1.99997))
 
+  ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2.00001))
+
+  plt.text(83.5226, -1032.86, "created by Peter Kveton May/12/21")
+  plt.title("{} Equationof State for {} in DFT {}".format('murnaghan, symbol, acronym'))
+  return ax, plt
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
 
 
 
