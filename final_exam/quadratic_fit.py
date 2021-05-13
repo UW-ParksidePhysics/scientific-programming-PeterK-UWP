@@ -3,9 +3,14 @@ import numpy as np
 
 def quadratic_fit(array):
   
-  x_values = array[0, :] #first eneries[0] from two columns
-  y_values = array[1, :] #second eneries[1] from two columns
+  undo_array = zip(*array)
+  array_2 = list(undo_array)
 
-  quadratic_coefficients = np.polyfit(x_values, y_values, 2)
+
+
+  quadratic_coefficients = np.polyfit(array_2[0], array_2[1], 2)
 
   return quadratic_coefficients
+
+  if __name__ =='__main__':
+    print(quadratic_fit(sys.argv[1]))

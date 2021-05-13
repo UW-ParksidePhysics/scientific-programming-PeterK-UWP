@@ -9,6 +9,8 @@ from numpy import linspace
 import matplotlib.pyplot as plt
 import numpy as np
 
+dispay_graph = True 
+
 def parse_file_name(file_name):
   to_parse = file_name.split(".")
   symbol = to_parse[0]
@@ -23,19 +25,22 @@ print(parse_file_name(file_name))
 array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")
 statistics = bivariate_statistics(array)
 quadratic_coefficients = quadratic_fit(array)
+quadratic_coefficients = [quadratic_coefficients[0], quadratic_coefficients[1]]
+print(quadratic_coefficients)
+
 
 undo_array = zip(*array)
 array_2 = list(undo_array)
 
-fit_eos, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)
+fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)
 
 #print(array)
 #mean_of_y, standard_deviation_of_y, x_min, x_max, y_min, y_max
 #print(statistics)
 min_x = statistics[2]
 max_x = statistics[3]
-#print(quadratic_coefficients)
-print(fit_eos, bulk_modulus)
+
+#print(fit_eos, bulk_modulus)
 
 def annotate_graph(symbol, structure):
   ax.annotate(symbol, xy=(min(array_2[1]) - (min(array_2[0]) * 0.07), 
@@ -61,9 +66,9 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 
 
-volumes = linspace(min(array_2[0]), max(array_2[0]), len(fit_eos))
+volumes = linspace(min(array_2[0]), max(array_2[0]), len(fit_eos_curve))
 line1, = ax.plot(array_2[0], array_2[1], 'o')  # 8
-line2, = ax.plot(volumes, fit_eos, color="black")
+line2, = ax.plot(volumes, fit_eos_curve, color="black")
 
 x_min = (min(array_2[0]) - (min(array_2[0]) * 0.10))
 x_max = (max(array_2[0]) + (max(array_2[0]) * 0.10))
