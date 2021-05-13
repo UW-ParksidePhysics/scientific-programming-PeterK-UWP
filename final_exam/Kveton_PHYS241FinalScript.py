@@ -33,11 +33,12 @@ print(quadratic_coefficients)
 min_x = statistics[2]
 max_x = statistics[3]
 """
-this comment provides the original graph I created using parameters before annotated graph. Un-comment and run to get this graph. Save by commenting plt.show() out and uncomment #plt.savefig()
+this comment provides the original graph I created using parameters before annotated graph. Un-comment and run to get this graph. Save by commenting plt.show() out and uncomment #plt.savefig("Initial_plot.png") in plot_data_with_fit.py
 
 #fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 #scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", #fit_format="k")
 #plt.show()
+#plt.savefig("Initial_plot.png")
 """
 
 """

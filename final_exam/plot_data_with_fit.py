@@ -17,7 +17,7 @@ def plot_data_with_fit(data, fit_curve, data_format="", fit_format=""):
 
   plt.show()
   
-  #plt.savefig("plot.png")
+  #plt.savefig("Initial_plot.png")
 
   return scatter_plot, curve_plot
 
