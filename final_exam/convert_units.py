@@ -2,7 +2,7 @@
 taking data (two_column) and fit (eq. of states) and converting their units
 """
  
-def convert_units(values, units, desired_units=0):
+def convert_units(value, units, desired_units=0):
   if units =="cb/a":
     value_in_desired_units = value * 0.148185
   elif units == "rb/a":
@@ -10,6 +10,6 @@ def convert_units(values, units, desired_units=0):
   elif units =="rb/cb":
     value_in_desired_units = value / 29421.02648438959
   else:
-    value_in_desired_unts = value
+    value_in_desired_units = value
   return value_in_desired_units
 

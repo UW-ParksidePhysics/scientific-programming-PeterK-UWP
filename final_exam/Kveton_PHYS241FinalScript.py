@@ -16,14 +16,14 @@ def parse_file_name(file_name):
   symbol = to_parse[0]
   structure = to_parse[1]
   acronym = to_parse[2]
-  return symbol, structure, acronym
+  return symbol, structure, acronym   #1
 
 
 file_name = "Al.Fm-3m.GGA-PBE.dat"
 symbol, structure, acronym = parse_file_name(file_name)
-array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")
-statistics = bivariate_statistics(array)
-quadratic_coefficients = quadratic_fit(array)
+array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")  #2
+statistics = bivariate_statistics(array)  #4
+quadratic_coefficients = quadratic_fit(array)  #5
 #quadratic_coefficients = [quadratic_coefficients[0], quadratic_coefficients[1]]
 print(quadratic_coefficients)
 
@@ -48,7 +48,7 @@ this comment provides the original graph I created using parameters before annot
 undo_array = zip(*array)
 array_2 = list(undo_array)
 
-fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)
+fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)   #6
 
 
 
@@ -91,7 +91,7 @@ plt.xlim(x_min, x_max)
 plt.ylim(y_min, y_max)
 plt.xlabel(r'$ \mathit{Å^3/atom}\ $')
 plt.ylabel(r'$ \mathcal{eV/atom}\ $')
-bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")
+bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")   #7
 eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
 annotate_graph(symbol, structure)
 if display_graph:  
@@ -125,7 +125,7 @@ plt.ylabel("ψ n ( x ) [a.u.]")
 plt.legend((line1, line2, line3), ('ψ1, Ε1 = 0.62414396 a.u.', 'ψ2, Ε2 = 0.87335307 a.u.', 'ψ3, Ε3 = 1.12229893 a.u.'))
 plt.axis([-10, 10, max(eigenvectors[0]) - 2, max(eigenvectors[0]) + 2])
 plt.axhline(color="black")  
-plt.text(-9.5, -1.75, "Created by Peter Kveton May/12/21") 
+plt.text(-9.5, -1.75, "Created by Peter Kveton 2021/05/12") 
 plt.title("Select Wavefunctions for a Harmonic Potential on a Spatial Grid of 0, 1, 2 Points") 
 
 
