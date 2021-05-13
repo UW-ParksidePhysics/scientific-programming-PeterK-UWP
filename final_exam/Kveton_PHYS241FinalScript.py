@@ -7,21 +7,20 @@ from equations_of_state import fit_eos
 from convert_units import convert_units
 from numpy import linspace
 import matplotlib.pyplot as plt
-import numpy as np
 
-dispay_graph = True 
+
+display_graph = True 
 
 def parse_file_name(file_name):
   to_parse = file_name.split(".")
   symbol = to_parse[0]
   structure = to_parse[1]
   acronym = to_parse[2]
-  parse_file_name = symbol, structure, acronym
-  return parse_file_name
+  return symbol, structure, acronym
 
 
 file_name = "Al.Fm-3m.GGA-PBE.dat"
-print(parse_file_name(file_name))
+symbol, structure, acronym = parse_file_name(file_name)
 array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")
 statistics = bivariate_statistics(array)
 quadratic_coefficients = quadratic_fit(array)
@@ -32,7 +31,7 @@ print(quadratic_coefficients)
 undo_array = zip(*array)
 array_2 = list(undo_array)
 
-fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)
+fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)
 
 #print(array)
 #mean_of_y, standard_deviation_of_y, x_min, x_max, y_min, y_max
@@ -89,8 +88,8 @@ elif not display_graph:
 
 
 
-
-#plot_graph = (plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")) #scatter_plot, curve_plot
+fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
+plot_graph = (plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")) #scatter_plot, curve_plot
 
 #plt.savefig("plot.png")
 ###########################################
@@ -99,21 +98,6 @@ from lowest_eigenvectors import lowest_eigenvectors
 from numpy import linspace
 import matplotlib.pyplot as plt
 
-#[
-#  from generate_matrix import generate_matrix # Harmonic 120,100
-#matrix = generate_matrix(min_x, max_x, 120, 'Harmonic', 100)
-##print(matrix)
-
-#from lowest_eignevectors import lowest_eigenvectors #0, 1, 2
-#matrix = np.array([
-#  [0, 0, 0],
-#  [0, 1, 0],
-#  [0, 0, 2]
-#  ])
-#values_sorted, vectors_sorted = lowest_eigenvectors(matrix, 3)
-#print(values_sorted)
-#print(vectors_sorted)
-#]
 
 display_graph = False
 potential_name = 'harmonic'
@@ -136,6 +120,7 @@ plt.axis([-10, 10, max(eigenvectors[0]) - 2, max(eigenvectors[0]) + 2])
 plt.axhline(color="black")  # 5
 plt.text(-9.5, -1.75, "Created by Peter Kveton May/12/21")  # 6
 plt.title("Select Wavefunctions for a Harmonic Potential on a Spatial Grid of 0, 1, 2 Points")  # 7
+
 
 if display_graph:
     plt.show()
