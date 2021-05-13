@@ -38,14 +38,20 @@ max_x = statistics[3]
 print(fit_eos, bulk_modulus)
 
 def annotate_graph(symbol, structure):
-  ax.annotate(symbol, xy=(min(array_2[1]) - (min(array_2[0]) * 0.07), max(array_2[1]) + max(array_2[0]) * 0.00007))
+  ax.annotate(symbol, xy=(min(array_2[1]) - (min(array_2[0]) * 0.07), 
+                          max(array_2[1]) + max(array_2[0]) * 0.00007))
 
   ax.annotate(r'$ {}\overline{{{}}} {}$'.format(structure[0:2],
-  structure[3], structure[1]), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2))
+                                                structure[3], 
+                                                structure[1]), 
+              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2))
 
-  ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 1.99997))
+  ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), 
+              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 1.99997))
 
-  ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2.00001))
+  ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), 
+              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2.00001))
+  plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
 
   plt.text(83.5226, -1032.86, "created by Peter Kveton May/12/21")
   plt.title("{} Equationof State for {} in DFT {}".format('murnaghan, symbol, acronym'))
@@ -55,38 +61,29 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 
 
+volumes = linspace(min(array_2[0]), max(array_2[0]), len(fit_eos))
+line1, = ax.plot(array_2[0], array_2[1], 'o')  # 8
+line2, = ax.plot(volumes, fit_eos, color="black")
+
+x_min = (min(array_2[0]) - (min(array_2[0]) * 0.10))
+x_max = (max(array_2[0]) + (max(array_2[0]) * 0.10))
+y_min = (min(array_2[1]) - (min(array_2[0]) * 0.00010))
+y_max = (max(array_2[1]) + (max(array_2[0]) * 0.00010))
+
+plt.xlim(x_min, x_max)
+plt.ylim(y_min, y_max)
+plt.xlabel(r'$ \mathit{Å^3/atom}\ $')
+plt.ylabel(r'$ \mathcal{eV/atom}\ $')
+bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")
+eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
+annotate_graph(symbol, structure)
+if display_graph:  # 10
+    plt.show(display_graph)
+elif not display_graph:
+    plt.savefig("Peter.Al.Fm-3m.GGA-PBEsol.murnaghanEquationOfState.png")
 
 
-volumes = array[0]
-energy = array[1]
-fit_eos = fit_eos(array[0], array[1], quadratic_coefficients)
-#print(fit_eos)
 
-#from convert_units import convert_values
-#converted_array = convert_values(array)
-#converted_fit = convert_values(fit_eos)
-#print(converted_array)
-#print(converted_fit)
-
-
-
-
-
-fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
-#print(fit_curve)
-
-
-
-
-def annotate_graph(symbol, structure, ):
-
- return plot_graph
-
-plt.text(130, 0.001, "symbol")
-plt.text(115, 0.001, "structure")
-plt.text(115, 0.0015, "bulk_modulus")
-
-print('does this go through?')
 
 #plot_graph = (plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")) #scatter_plot, curve_plot
 
