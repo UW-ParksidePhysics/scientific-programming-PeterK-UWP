@@ -11,10 +11,6 @@ def plot_data_with_fit(data, fit_curve, data_format="", fit_format=""):
   plt.title((r'Fm-3m Equation of State for Al in DFT GGA-PBE'), y=1.05)
   plt.xlabel(r'$V$ $A^3/atom$')
   plt.ylabel(r'$E$ $eV/atom$')
-  
-  plt.text(0.5, 0.5, r'symbol')
-  plt.text(1, 0.1, r'structure')
-  plt.text(2, 0.7, r'bulk_modulus')
 
   plt.xlim([90, 137])
 

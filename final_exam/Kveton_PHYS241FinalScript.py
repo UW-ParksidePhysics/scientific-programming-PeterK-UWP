@@ -24,20 +24,32 @@ symbol, structure, acronym = parse_file_name(file_name)
 array = two_column_text_read("Al.Fm-3m.GGA-PBE.dat")
 statistics = bivariate_statistics(array)
 quadratic_coefficients = quadratic_fit(array)
-quadratic_coefficients = [quadratic_coefficients[0], quadratic_coefficients[1]]
+#quadratic_coefficients = [quadratic_coefficients[0], quadratic_coefficients[1]]
 print(quadratic_coefficients)
-
-
-undo_array = zip(*array)
-array_2 = list(undo_array)
-
-fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)
 
 #print(array)
 #mean_of_y, standard_deviation_of_y, x_min, x_max, y_min, y_max
 #print(statistics)
 min_x = statistics[2]
 max_x = statistics[3]
+"""
+this comment provides the original graph I created using parameters before annotated graph. Un-comment and run to get this graph. Save by commenting plt.show() out and uncomment #plt.savefig()
+
+#fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
+#scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", #fit_format="k")
+#plt.show()
+"""
+
+"""
+\/\/attempting the annotation \/\/
+"""
+
+undo_array = zip(*array)
+array_2 = list(undo_array)
+
+fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)
+
+
 
 #print(fit_eos, bulk_modulus)
 
@@ -66,7 +78,7 @@ ax = fig.add_subplot(111)
 
 
 volumes = linspace(min(array_2[0]), max(array_2[0]), len(fit_eos_curve))
-line1, = ax.plot(array_2[0], array_2[1], 'o')  # 8
+line1, = ax.plot(array_2[0], array_2[1], 'o') 
 line2, = ax.plot(volumes, fit_eos_curve, color="black")
 
 x_min = (min(array_2[0]) - (min(array_2[0]) * 0.10))
@@ -81,17 +93,11 @@ plt.ylabel(r'$ \mathcal{eV/atom}\ $')
 bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")
 eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
 annotate_graph(symbol, structure)
-if display_graph:  # 10
+if display_graph:  
     plt.show(display_graph)
 elif not display_graph:
     plt.savefig("Peter.Al.Fm-3m.GGA-PBEsol.murnaghanEquationOfState.png")
 
-
-
-fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
-plot_graph = (plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")) #scatter_plot, curve_plot
-
-#plt.savefig("plot.png")
 ###########################################
 from generate_matrix import generate_matrix
 from lowest_eigenvectors import lowest_eigenvectors
@@ -108,18 +114,18 @@ matrix = generate_matrix(-10, 10, N_dim, potential_name, potential_parameter)
 #print(matrix)
 eigenvalues, eigenvectors = lowest_eigenvectors(matrix, 3)
 
-x = linspace(-10, 10, N_dim)  # 3
-line1, = plt.plot(x, eigenvectors[0][0:N_dim])  # 4
-line2, = plt.plot(x, eigenvectors[1][0:N_dim])  # 4
-line3, = plt.plot(x, eigenvectors[2][0:N_dim])  # 4
+x = linspace(-10, 10, N_dim)  
+line1, = plt.plot(x, eigenvectors[0][0:N_dim])  
+line2, = plt.plot(x, eigenvectors[1][0:N_dim])  
+line3, = plt.plot(x, eigenvectors[2][0:N_dim])  
 
 plt.xlabel("x [a.u.]")
 plt.ylabel("ψ n ( x ) [a.u.]")
 plt.legend((line1, line2, line3), ('ψ1, Ε1 = 0.62414396 a.u.', 'ψ2, Ε2 = 0.87335307 a.u.', 'ψ3, Ε3 = 1.12229893 a.u.'))
 plt.axis([-10, 10, max(eigenvectors[0]) - 2, max(eigenvectors[0]) + 2])
-plt.axhline(color="black")  # 5
-plt.text(-9.5, -1.75, "Created by Peter Kveton May/12/21")  # 6
-plt.title("Select Wavefunctions for a Harmonic Potential on a Spatial Grid of 0, 1, 2 Points")  # 7
+plt.axhline(color="black")  
+plt.text(-9.5, -1.75, "Created by Peter Kveton May/12/21") 
+plt.title("Select Wavefunctions for a Harmonic Potential on a Spatial Grid of 0, 1, 2 Points") 
 
 
 if display_graph:
