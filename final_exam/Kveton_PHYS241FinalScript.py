@@ -48,7 +48,7 @@ this comment provides the original graph I created using parameters before annot
 undo_array = zip(*array)
 array_2 = list(undo_array)
 
-fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients,                                         eos='murnaghan', number_of_points=50)   #6
+fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)   #6
 
 
 
