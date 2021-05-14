@@ -46,7 +46,7 @@ def fit_eos(volumes, energies, quadratic_coefficients, eos='vinet', number_of_po
     eos_fit_curve = lambda_dictionary[eos.lower()](fit_curve_volumes,
                         eos_parameters[0], eos_parameters[1], eos_parameters[2], eos_parameters[3])
 
-    return eos_fit_curve
+    return eos_fit_curve, eos_parameters
 
 
 def murnaghan(volumes, equilibrium_energy, bulk_modulus, bulk_modulus_derivative, equilibrium_volume):

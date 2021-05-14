@@ -47,8 +47,10 @@ this comment provides the original graph I created using parameters before annot
 
 undo_array = zip(*array)
 array_2 = list(undo_array)
-
-fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)   #6
+# fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)   #6
+fit_eos_curve, fit_parameters = fit_eos(array[0], array[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)   #6
+bulk_modulus = fit_parameters[1]
+equilibrium_volume = fit_parameters[3]
 
 
 
@@ -71,7 +73,7 @@ def annotate_graph(symbol, structure):
   plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
 
   plt.text(83.5226, -1032.86, "created by Peter Kveton May/12/21")
-  plt.title("{} Equationof State for {} in DFT {}".format('murnaghan, symbol, acronym'))
+  plt.title("{} Equation of State for {} in DFT {}".format('Murnaghan', symbol, acronym))
   return ax, plt
 
 fig = plt.figure()
@@ -89,13 +91,13 @@ y_max = (max(array_2[1]) + (max(array_2[0]) * 0.00010))
 
 plt.xlim(x_min, x_max)
 plt.ylim(y_min, y_max)
-plt.xlabel(r'$ \mathit{Å^3/atom}\ $')
-plt.ylabel(r'$ \mathcal{eV/atom}\ $')
+plt.xlabel(r'$V$ (Å$^3$/atom)')
+plt.ylabel(r'$E$ (eV/atom)')
 bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")   #7
 eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
 annotate_graph(symbol, structure)
 if display_graph:  
-    plt.show(display_graph)
+    plt.show()
 elif not display_graph:
     plt.savefig("Peter.Al.Fm-3m.GGA-PBEsol.murnaghanEquationOfState.png")
 
