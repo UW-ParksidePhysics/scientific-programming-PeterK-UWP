@@ -63,21 +63,22 @@ def annotate_graph(symbol, structure):
   ax.annotate(r'$ {}\overline{{{}}} {}$'.format(structure[0:2],
                                                 structure[3], 
                                                 structure[1]), 
-              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2))
+              xy=(130, 0.001)
 
   ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), 
-              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 1.99997))
+              xy=(115, 0))
 
   ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), 
-              xy=(eq_vol, (max(array_2[1]) + min(array_2[1])) / 2.00001))
+              xy=(115, 0.001)
   plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
 
-  plt.text(83.5226, -1032.86, "created by Peter Kveton May/12/21")
+  plt.text(91, -0.0025, "created by Peter Kveton May/12/21")
   plt.title("{} Equation of State for {} in DFT {}".format('Murnaghan', symbol, acronym))
   return ax, plt
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
+
 
 
 volumes = linspace(min(array_2[0]), max(array_2[0]), len(fit_eos_curve))
@@ -96,6 +97,7 @@ plt.ylabel(r'$E$ (eV/atom)')
 bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")   #7
 eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
 annotate_graph(symbol, structure)
+
 if display_graph:  
     plt.show()
 elif not display_graph:
