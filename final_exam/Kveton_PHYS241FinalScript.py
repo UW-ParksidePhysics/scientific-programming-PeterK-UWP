@@ -57,24 +57,25 @@ equilibrium_volume = fit_parameters[3]
 #print(fit_eos, bulk_modulus)
 
 def annotate_graph(symbol, structure):
-  ax.annotate(symbol, xy=(min(array_2[1]) - (min(array_2[0]) * 0.07), 
-                          max(array_2[1]) + max(array_2[0]) * 0.00007))
+  ax.annotate(symbol, xy=(130, 0.001))
 
   ax.annotate(r'$ {}\overline{{{}}} {}$'.format(structure[0:2],
                                                 structure[3], 
                                                 structure[1]), 
-              xy=(130, 0.001))
-
-  ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), 
               xy=(115, 0))
 
-  ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), 
+  ax.annotate('K_0={:.6f}GPa'.format(bulk_modulus_gpa), 
               xy=(115, 0.001))
+
+  ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol), 
+              xy=(115, -0.001))
   plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
 
   plt.text(91, -0.0025, "created by Peter Kveton May/12/21")
   plt.title("{} Equation of State for {} in DFT {}".format('Murnaghan', symbol, acronym))
   return ax, plt
+
+
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -87,8 +88,10 @@ line2, = ax.plot(volumes, fit_eos_curve, color="black")
 
 x_min = (min(array_2[0]) - (min(array_2[0]) * 0.10))
 x_max = (max(array_2[0]) + (max(array_2[0]) * 0.10))
-y_min = (min(array_2[1]) - (min(array_2[0]) * 0.00010))
-y_max = (max(array_2[1]) + (max(array_2[0]) * 0.00010))
+y_min = (-0.003)#(min(array_2[1]) - (min(array_2[0]) * 0.00010))
+y_max = (0.003)#(max(array_2[1]) + (max(array_2[0]) * 0.00010))
+
+
 
 plt.xlim(x_min, x_max)
 plt.ylim(y_min, y_max)
@@ -97,6 +100,9 @@ plt.ylabel(r'$E$ (eV/atom)')
 bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")   #7
 eq_vol = array_2[0][array_2[1].index(min(array_2[1]))]
 annotate_graph(symbol, structure)
+
+fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
+scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
 
 if display_graph:  
     plt.show()
