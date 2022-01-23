@@ -1,1 +1,6 @@
-hello
+%hello
+%testing with ball.py
+
+import vpython as vp
+
+vp.sphere()
