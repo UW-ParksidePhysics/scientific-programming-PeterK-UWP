@@ -39,6 +39,7 @@ def probability_function(n_ray_ray):
         probability_array.append(probability)
     return probability_array
 
+
 plt.plot((n_array(N)), probability_function(n_array(N)), color='black')
 plt.xlabel(r'n-value')
 plt.ylabel(r'probability')
