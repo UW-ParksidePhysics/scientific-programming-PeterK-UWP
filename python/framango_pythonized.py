@@ -1,9 +1,7 @@
+# framango pythonize PDF
 from math import *
 from numpy import *
-import numpy as np
-from matplotlib import *
 import matplotlib.pyplot as plt
-
 N = 100
 
 
@@ -41,14 +39,16 @@ def probability_function(n_ray_ray):
         probability_array.append(probability)
     return probability_array
 
+plt.plot((n_array(N)), probability_function(n_array(N)), color='black')
+plt.xlabel(r'n-value')
+plt.ylabel(r'probability')
+plt.show()
 
+# if '__name__' == '__main__':
 # print(n_array(N))
 # print(factorial(N))
 # print(factorial(n_array(N)))
 # print(probability_function(n_array(N)))
 
-plt.plot((n_array(N)), probability_function(n_array(N)), color='black')
-plt.xlabel(r'n-value')
-plt.ylabel(r'probability')
-plt.show()
+
 
