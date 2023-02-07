@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import requests
 import lxml.html
+
 # import modulus and strength to get stress and strain
 
 url = 'http://www-materials.eng.cam.ac.uk/mpsite/short/OCR/ropes/default.html'
@@ -13,6 +14,12 @@ def read_webpage(link):
     webdata = pd.read_html(link)
     rope_data = webdata[6]
     return rope_data
+
+
+def modulus_strength(rope_table_data):
+    modulus = rope_table_data[:][2]
+    strength = rope_table_data[:][4]
+    return modulus, strength
 
 
 def stress(strains, modulus):
@@ -47,10 +54,7 @@ def plot_stress_strain(stress_data, strain_data):
     return
 
 
-if __name__ == '__main__':
-    # url link troubleshoot:
-    print(read_webpage(url))
-    # df = pd.read_html(url)
-    # print(type(df))
-    # print(len(df))
-    # plot_stress_strain()
+"""if __name__ == '__main__':
+    # print(read_webpage(url))
+    print(modulus_strength(read_webpage(url)))"""
+

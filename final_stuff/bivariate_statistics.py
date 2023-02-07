@@ -9,9 +9,9 @@ import numpy as np
 
 def bivariate_statistics(data):
     if len(data) != 2 or len(data[0]) <= 1:
-        raise IndexError
+        raise IndexError('no')
 
-    stat = stats.stats.describe(data, axis=1)
+    stat = stats.describe(data, axis=1)
     mean_of_y = stat.minmax[0][1]
     x_min, x_max = stat.minmax[0][0], stat.minmax[1][0]
     y_min, y_max = stat.minmax[0][1], stat.minmax[1][1]
@@ -25,6 +25,8 @@ if __name__ == "__main__":
     x = [1, 2, 3]  # 2 (Inputs)
     y = [2, 4, 6]  # 4 (inputs)
     data_array = np.array([x, y])
-    print(data_array)
+    print(stats.describe(data_array))
+    # print(data_array)
     output = bivariate_statistics(data_array)
     print(output)
+    print(f'mean = {output[0]}, deviation = {output[1]}, min_x = {output[2]}')

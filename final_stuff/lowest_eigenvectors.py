@@ -5,19 +5,22 @@ returns this sorted list for future computation
 """
 __author__ = "Peter & Lena"
 
-
 import numpy as np
 
 
 def lowest_eigenvectors(square_matrix, number_of_eigenvectors=3):
+    m, n = square_matrix.shape
+    if m != n:
+        raise IndexError("Matrix is not square!")
 
-  m, n = square_matrix.shape
-  if m != n:
-    raise IndexError("Matrix is not square!")
+    values, vectors = np.linalg.eig(square_matrix)
+    values_sorted = np.sort(values)
+    vectors_sorted = vectors[:, values.argsort()].transpose()
 
-  values, vectors = np.linalg.eig(square_matrix)
-  values_sorted = np.sort(values)
-  vectors_sorted = vectors[:, values.argsort()]
+    return values_sorted[:number_of_eigenvectors], vectors_sorted[:number_of_eigenvectors]
 
-  return values_sorted[:number_of_eigenvectors+1], vectors_sorted[:number_of_eigenvectors+1]
 
+if __name__ == '__main__':
+    array = np.array([[3, 1, 1], [0, 2, 1], [0, 0, 1]])  # given array
+    eigenvalues, eigenvectors = lowest_eigenvectors(array, number_of_eigenvectors=2)  # number of eigenvalues
+    print(eigenvectors[0])  # should print lowest of the three

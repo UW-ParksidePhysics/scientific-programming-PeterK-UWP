@@ -15,6 +15,12 @@ def read_webpage(link):
     return rope_data
 
 
+def modulus_strength(rope_table_data):
+    modulus = rope_table_data[:][2]
+    strength = rope_table_data[:][4]
+    return modulus, strength
+
+
 def stress(strains, modulus):
     stress = modulus * strains
     return stress
@@ -49,9 +55,12 @@ def plot_stress_strain(stress_data, strain_data):
 
 if __name__ == '__main__':
     # url link troubleshoot:
-    print(read_webpage(url))
+    ##print(read_webpage(url))
     # df = pd.read_html(url)
     # print(type(df))
     # print(len(df))
     # plot_stress_strain()
-
+    rope_data = read_webpage(url)
+    # print(type(rope_data))
+    # print(len(rope_data))
+    # print(modulus_strength(rope_data))
