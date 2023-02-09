@@ -35,18 +35,5 @@ def force(mass, acceleration):
 print(force(m, a))
 print(f'Given a mass: {m}kg, and an acceleration: {a}m/s/s, we get a force: {force(m, a)}N!')
 
-# for loop
-import numpy as np
-n = eval(input('input number:'))
-array = np.arange(0, n + 1)     # x values
-list_of_numbers = []            # y values
-for i in array:
-    y = i ** 2     # y = x^2
-    list_of_numbers.append(y)
-print(list_of_numbers)
 
-# plotting, (need these loops above to make plots)
-import matplotlib.pyplot as plt
-plt.plot(array, list_of_numbers)
-plt.show()
 
