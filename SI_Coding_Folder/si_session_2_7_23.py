@@ -35,5 +35,8 @@ def force(mass, acceleration):
 print(force(m, a))
 print(f'Given a mass: {m}kg, and an acceleration: {a}m/s/s, we get a force: {force(m, a)}N!')
 
+print(f'Given a mass {m:0.2f}kg, and an acceleration {acceleration(t, v):0.3f}m/s/s, we get a force'
+      f' {force(m, acceleration(t, v)):0.5f}N')
+
 
 
