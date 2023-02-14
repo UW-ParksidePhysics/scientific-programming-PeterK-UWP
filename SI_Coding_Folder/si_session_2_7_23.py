@@ -2,8 +2,7 @@
 Today we will cover some basics to coding in python which include:
  - formatting print statements
  - definition statements
- - for loops
- - using loops to graph
+
 """
 
 # formatting print statements
@@ -33,10 +32,9 @@ def force(mass, acceleration):
 
 
 print(force(m, a))
-print(f'Given a mass: {m}kg, and an acceleration: {a}m/s/s, we get a force: {force(m, a)}N!')
+print(f'Given a mass: {m:0.2f}kg, and an acceleration: {a:0.2f}m/s/s, we get a force: {force(m, a):0.2f}N!')
 
-print(f'Given a mass {m:0.2f}kg, and an acceleration {acceleration(t, v):0.3f}m/s/s, we get a force'
-      f' {force(m, acceleration(t, v)):0.5f}N')
+# :0.2f will cut off decimals after the second decimal point
 
 
 

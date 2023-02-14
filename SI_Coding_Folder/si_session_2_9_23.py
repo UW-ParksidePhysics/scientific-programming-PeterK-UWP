@@ -1,21 +1,17 @@
-import numpy as np
-import matplotlib.pyplot as plt
 """
-In this code, we will look into using a simple for loop to graph a plot using matplotlib
-we will also look into f-formatting to make the output cleaner.
- - formatting
- - for loop
- - plot
+Today we had plans to do for loop, however we instead worked on homework problems as a group
 """
-# for loop
-n = eval(input('input number:'))
-array = np.arange(0, n + 1)     # x values
-list_of_numbers = []            # y values
-for i in array:
-    y = i ** 2     # y = x^2
-    list_of_numbers.append(y)
-print(list_of_numbers)
+# basic adding
+x = 1 + 1
+print(x)
 
-# plotting, (need these loops above to make plots)
-plt.plot(array, list_of_numbers)
-plt.show()
+# seconds to years
+days_in_a_year = 365.25
+hours_in_a_day = 24
+minutes_in_a_hour = 60
+seconds_in_a_minutes = 60
+seconds = 10**9
+
+x = seconds/seconds_in_a_minutes/minutes_in_a_hour/hours_in_a_day/days_in_a_year
+
+print(x)
