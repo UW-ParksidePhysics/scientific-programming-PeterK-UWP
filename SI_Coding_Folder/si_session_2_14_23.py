@@ -25,3 +25,17 @@ plt.legend(["y = x^2"], loc="lower right")                         # legend (key
 plt.title('graph of y = x^2')                                      # title of graph
 plt.savefig('y = x^2')                                             # saves graph as a png
 plt.show()                                                         # display the graph
+
+"""
+ ##sum_int.py##
+n = eval(input('enter n value:'))
+n_values_array = np.arange(0, n + 1)
+# n_values_array = np.linspace(0, n, n + 1)  # start, ending value, how many values
+# print(n_values_array)
+
+initial_value = 0
+for i in n_values_array:
+    initial_value += i
+    equation = (i * (i + 1)) / 2
+    print(initial_value, equation)
+"""
