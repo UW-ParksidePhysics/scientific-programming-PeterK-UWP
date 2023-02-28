@@ -53,3 +53,15 @@ print(matrix_manipulations(matrix_A, matrix_B)[2])
 print(f'The quotient of matrix A to B is')
 print(matrix_manipulations(matrix_A, matrix_B)[3])
 """
+
+"""
+Meet/plan for the week 2/20 - 2/24
+
+functions and branching
+solving matrix eq (finding inverse)
+
+shell: manipulating files and directories
+
+suggested topics:
+circuit, projectile motion, spring system, orbits, collisions (contact check)(elastic), kinetic energy
+"""
