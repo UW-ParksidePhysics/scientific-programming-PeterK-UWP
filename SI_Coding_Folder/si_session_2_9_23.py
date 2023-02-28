@@ -4,21 +4,27 @@ Today we had plans to do for loop, however we instead worked on homework problem
 # basic adding
 x = 1 + 1
 # print(x)
-
+"""
 # seconds to years
 days_in_a_year = 365.25
 hours_in_a_day = 24
 minutes_in_a_hour = 60
 seconds_in_a_minutes = 60
 # seconds = 10**9
-
+"""
 # x = seconds/seconds_in_a_minutes/minutes_in_a_hour/hours_in_a_day/days_in_a_year
 
 # print(x)
 
 
-def convert_seconds_to_years(seconds_input):
-    years_output = seconds_input/60/60/24/365.25
-    return years_output
+def convert_seconds_to_years(seconds):
+    days_in_a_year = 365.25
+    hours_in_a_day = 24
+    minutes_in_a_hour = 60
+    seconds_in_a_minutes = 60
+    years = seconds/seconds_in_a_minutes/minutes_in_a_hour/hours_in_a_day/days_in_a_year
+    return years
+
+
 
 
