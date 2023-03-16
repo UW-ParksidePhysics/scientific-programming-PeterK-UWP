@@ -72,50 +72,54 @@ def apparent_to_absolute_magnitude(apparent_magnitude, distance):
 def read_file(filename):
     """Read four column data from HIPPARCOS satellite and return a nested dictionary"""
     # Read in as nested dictionary
-    hipparcos_data_array = open(filename, 'r')
-    hipparcos_data = hipparcos_data_array.readlines()
-    hipparcos_list = []
-
-    for line in hipparcos_data:
-        numbers = line.split()
-        star_catalog = (numbers[0])
-        parallax = float(numbers[1])
-        apparent_magnitude = float(numbers[2])
-        blue_minus_visual = float(numbers[3])
-
-        hipparcos_data = {'(star catalog number': [star_catalog],
-                          'parallax': [parallax],
-                          'apparent_magnitude': [apparent_magnitude],
-                          'blue_minus_visual': [blue_minus_visual]
-                          }
-        hipparcos_data.append(star_catalog)
-
-    hipparcos_data_array.close()
-    return hipparcos_data
-
-
-# f_value = int(data_contents[2].split()[2])
+    infile = open(filename, 'r')
+    hipparcos_read = infile.readlines()
+    hipparcos_dictionary = {}
+    for line in hipparcos_read:
+        values = line.split()
+        star_catalog_number = float(values[0])
+        parallax = float(values[1])
+        apparent_magnitude = float(values[2])
+        blue_minus_visual = float(values[3])
+        hipparcos_dictionary[star_catalog_number] = \
+            {'parallax': parallax, 'apparent_magnitude': apparent_magnitude,
+             'blue_minus_visual': blue_minus_visual}
+    infile.close()
+    return hipparcos_dictionary
 
 
 # Apply read function to the data file and produce a nested dictionary
-hipparcos_dictionary = read_file('hipparcos_data.txt')
-print(hipparcos_dictionary)
+hipparcos_dictionary_read = read_file('hipparcos_data.txt')  # list, each term inside is also a list, values are float
 # Loop over star catalog number key
+star_absolute_magnitudes = []
+star_b_minus_vs = []
+parallax_value = []
+a = np.arange(1, 1038, 1)
+"""
+for value in a:
+    p_value = parallax_to_distance(hipparcos_dictionary[value][1])
+    a_value = apparent_to_absolute_magnitude(hipparcos_dictionary[value][2],
+                                             parallax_to_distance(hipparcos_dictionary[value][1]))
+    parallax_value.append(p_value)
+    star_absolute_magnitudes.append(a_value)
 #       Call parallax_to_distance on parallax value and assign to new value
 #       Call apparent_to_absolute_magnitude on apparent magnitude value and assign to new value
 #       Append absolute magnitude for current star into NumPy array of absolute magnitudes
-#           named star_absolute_magnitudes
+#           named star_absolute_magnitudes = []
 #       Append B-V value for current star into NumPy array of B-V values
-#           named star_b_minus_vs
-
+#           named star_b_minus_vs = []
+"""
+print(hipparcos_dictionary_read)
+print(parallax_value)
+print(star_absolute_magnitudes)
 # Use dark style for plot
 plt.style.use('dark_background')
 
 # Reverse the absolute magnitude so that negative values appear on top
-##star_absolute_magnitudes = np.negative(star_absolute_magnitudes)
+star_absolute_magnitudes = np.negative(star_absolute_magnitudes)
 
 # Get color map to match star colors
-##scaled_b_minus_v, hr_diagram_colormap = star_colormap(star_b_minus_vs)
+scaled_b_minus_v, hr_diagram_colormap = star_colormap(star_b_minus_vs)
 
 # Create axes labels
 plt.xlabel('Colour (B-V)')
@@ -125,5 +129,5 @@ plt.ylabel('Luminosity (Sun=1)')
 # Define the scatter marker size in points squared (make it similar to the model figure)
 
 # Scatter plot of B-V vs absolute magnitude
-##plt.scatter(star_b_minus_vs, star_absolute_magnitudes, c=scaled_b_minus_v, cmap=hr_diagram_colormap)
+plt.scatter(star_b_minus_vs, star_absolute_magnitudes, c=scaled_b_minus_v, cmap=hr_diagram_colormap)
 plt.show()
