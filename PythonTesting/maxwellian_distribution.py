@@ -30,7 +30,7 @@ def distribution(temperature_array):
     y_values = []
     for v in velocities:
         f = density_of_particles * (m_t / (2 * np.pi * energy_array)) ** (1 / 2) * np.e ** (
-                    -m_t * v ** 2 / (2 * energy_array))
+                -m_t * v ** 2 / (2 * energy_array))
         # f = (m_t / (2 * np.pi * energy_array)) ** (3 / 2) * 4 * np.pi * v ** 2 * \
         #    np.e ** (-m_t * v ** 2 / (2 * energy_array))
         y_values.append(f)

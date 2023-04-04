@@ -91,17 +91,17 @@ ball_velocity_earth = initial_velocity_earth
 z_earth = initial_velocity_earth.z
 while ball_earth.pos.z > 0:
     vp.rate(rate_of_animation)
-    ball_velocity_earth.z = z_earth + grav_earth*time
+    ball_velocity_earth.z = z_earth + grav_earth*time   # v = v_0 + a*t
     if ball_earth.pos.z <= 0:
         ball_velocity_earth.x = 0
         ball_velocity_earth.y = 0
         ball_velocity_earth.z = 0
 
-    ball_earth.pos.x += ball_velocity_earth.x * time_step
+    ball_earth.pos.x += ball_velocity_earth.x * time_step   # x = v * t
     ball_earth.pos.y += ball_velocity_earth.y * time_step
     ball_earth.pos.z += ball_velocity_earth.z * time_step
 
-    time += time_step
+    time += time_step   # time update
 
 time = 0
 ball_velocity_mars = initial_velocity_mars
