@@ -24,8 +24,8 @@ def __equation_name__(arg1, agr2, ...):
     :return:
     """
     # <equation>
-    <variable> = <equation>
-    return <variable>
+    <variable_y_axis> = <equation>
+    return <variable_y_axis>
 
 
 # generate arrays to plug into your def statement, you can use for loops or linear_algebra code
