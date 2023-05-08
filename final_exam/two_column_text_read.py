@@ -19,3 +19,6 @@ def two_column_text_read(file_name):
         n += 1
 
     return data
+
+
+print(f"data={two_column_text_read('Al.Fm-3m.GGA-PBE.dat')}")

@@ -21,6 +21,8 @@ def lowest_eigenvectors(square_matrix, number_of_eigenvectors=3):
 
 
 if __name__ == '__main__':
-    array = np.array([[3, 1, 1], [0, 2, 1], [0, 0, 1]])  # given array
+    array = np.array([[2, -1], [-1, 2]]) #[[3, 1, 1], [0, 2, 1], [0, 0, 1]])  # given array [2, -1], [-1, 2]
     eigenvalues, eigenvectors = lowest_eigenvectors(array, number_of_eigenvectors=2)  # number of eigenvalues
+    # print(lowest_eigenvectors(array)) change eigenvectors from 3 to 2
+    print(eigenvalues, eigenvectors)
     print(eigenvectors[0])  # should print lowest of the three

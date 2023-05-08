@@ -3,10 +3,10 @@ from scipy import stats
 
 
 def bivariate_statistics(data):
-    if (len(data) != 2 or len(data[0]) <= 1):
+    if len(data) != 2 or len(data[0]) <= 1:
         raise IndexError
 
-    stat = stats.stats.describe(data, axis=1)
+    stat = stats.stats.describe(data, axis=1)   # axis=1 is the key for this to work
     mean_of_y = stat.minmax[0][1]
     x_min, x_max = stat.minmax[0][0], stat.minmax[1][0]
     y_min, y_max = stat.minmax[0][1], stat.minmax[1][1]

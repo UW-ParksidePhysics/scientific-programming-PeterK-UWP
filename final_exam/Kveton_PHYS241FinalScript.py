@@ -52,8 +52,8 @@ array_2 = array  # list(undo_array)
 # fit_eos_curve, bulk_modulus = fit_eos(array_2[0], array_2[1], quadratic_coefficients, eos='murnaghan', number_of_points=50)   #6
 fit_eos_curve, fit_parameters = fit_eos(array[0], array[1], quadratic_coefficients, eos='murnaghan',
                                         number_of_points=50)  # 6
-#plt.plot(linspace(array[0][0], array[0][-1], num=len(fit_eos_curve)), fit_eos_curve)
-#plt.show()
+# plt.plot(linspace(array[0][0], array[0][-1], num=len(fit_eos_curve)), fit_eos_curve)
+# plt.show()
 print(fit_parameters)
 bulk_modulus = fit_parameters[1]
 equilibrium_volume = fit_parameters[3]
@@ -74,7 +74,7 @@ def annotate_graph(symbol, structure):
 
     ax.annotate('V_0={:.3f}A^3/atom'.format(eq_vol),
                 xy=(115, -0.001))
-    #plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
+    # plt.axvline(eq_vol - array_2[0][array_2[1].index(min(array_2[1]))] * 0.01, color="black", linestyle='--')
 
     plt.text(91, -0.0025, "created by Peter Kveton May/12/21")
     # plt.title("{} Equation of State for {} in DFT {}".format('Murnaghan', symbol, acronym))
@@ -94,19 +94,19 @@ y_min = (-0.003)  # (min(array_2[1]) - (min(array_2[0]) * 0.00010))
 y_max = (0.003)  # (max(array_2[1]) + (max(array_2[0]) * 0.00010))
 
 plt.xlim(x_min, x_max)
-#plt.ylim(y_min, y_max)
+# plt.ylim(y_min, y_max)
 plt.xlabel(r'$V$ (Å$^3$/atom)')
 plt.ylabel(r'$E$ (eV/atom)')
 bulk_modulus_gpa = convert_units(bulk_modulus, "rb/cb")  # 7
 eq_vol = fit_parameters[3]  # array_2[0][array_2[1].index(min(array_2[1]))]
 array[1] = array[1] - fit_parameters[0]
 
-#annotate_graph(symbol, structure)
+# annotate_graph(symbol, structure)
 
 fit_curve = fit_curve_array(quadratic_coefficients, min_x, max_x, number_of_points=100)
 fit_curve[1] = fit_curve[1] - fit_parameters[0]
-#print(array, fit_curve)
-#scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
+# print(array, fit_curve)
+# scatter_plot, curve_plot = plot_data_with_fit(array, fit_curve, data_format="bo", fit_format="k")
 
 if display_graph:
     plt.show()  # fix something above^^
